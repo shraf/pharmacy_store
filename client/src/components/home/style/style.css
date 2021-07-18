@@ -1,0 +1,14 @@
+body,html,#root{
+    height:100%;
+}
+.wallpaper{
+    background-image: linear-gradient(to bottom, white 10%, #e4d3cf 50%);
+    min-height: 100%;
+}
+.card{
+    background-size: cover !important;
+    height: 250px;
+}
+.col-md-4,.col-sm-6{
+    padding: 10px;
+}

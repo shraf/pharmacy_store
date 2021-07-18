@@ -1,0 +1,73 @@
+
+.bg-sky{
+    background-color: #5670bd  !important}
+  
+    .custom-file-label::after{
+      background-color: #5670bd !important;
+      color: #fff !important;
+    }
+    @keyframes animated-btn {
+        from{
+          transform: rotate(0deg);
+        }
+        to{
+          transform:rotate(360deg);
+        }
+    }
+     @keyframes animated-click {
+       from{
+         transform:rotate(270deg);
+       }
+       50%{
+         transform: rotate(360deg);
+       }
+       to{
+         transform: rotate(0deg);
+       }
+     }
+
+    .animated-btn{
+      animation: animated-btn infinite 5s linear;
+    }
+    .animated-btn:hover{
+      animation-play-state: paused;
+    }
+
+    .animated-click + img{
+      animation:animated-click 1 5s linear;
+      
+
+    }
+
+    .animated-click {
+      background-color: green !important;
+      box-shadow: 0px 0px 10px 10px #000;
+      
+    }
+
+    .animated-click::after{
+      content:"ed Successfully";
+    }
+    
+    .animated-err{
+      background-color: Red !important;
+      box-shadow: 0px 0px 10px 10px #000;
+    }
+
+    .animated-err::after{
+      content:"ed Error";
+
+    }
+
+    .err-msg{
+      background-color: rgba(0,0,0,0.3);
+      position: absolute;
+      top:0;
+      height: 100vh;
+      width: 100vw;
+      
+    }
+    .err-msg span{
+      color:#fff;
+      line-height: 80vh;
+    }
