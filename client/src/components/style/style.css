@@ -1,0 +1,25 @@
+.gen-btn{
+    background-color: #fed54d !important;
+    outline: none !important;
+    border: none !important;
+    color:#000 !important;
+}
+.social-btn{
+    background-color: #fff !important;
+    color :#000 !important;
+}
+.form{
+    margin-top: 50px;
+    overflow: visible;
+    background-color: #fff;
+}
+@media only screen and (min-width: 992px){
+    .form{
+        width:40% !important;
+    }
+}
+@media only screen and (min-width: 992px){
+    .card{
+        width: 50%;
+    }
+}
