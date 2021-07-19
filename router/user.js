@@ -13,6 +13,7 @@ const authFacebook = async (id) => {
     return user ? user : false;
 }
 
+
 const signJwt = async (user, callback) => {
     console.log("tetsetbatuib");
   console.log(user);
