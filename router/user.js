@@ -6,7 +6,7 @@ const Product = require('../models/product');
 const Order = require('../models/order');
 const mongoose = require('mongoose');
 const router = express.Router();
-
+const axios=require("axios");
 
 const authFacebook = async (id) => {
     const user = await User.findOne({ facebook_id: id });
@@ -116,21 +116,27 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/facebook/login', (req, res) => {
+    console.log("logging");
     const accessToken = req.body.accessToken;
     const id = req.body.id;
     const options = {
         method: "GET",
-        uri: `https://graph.facebook.com/v2.8/${id}`,
-        qs: {
-            access_token: accessToken,
-            fields: "name,email"
-        }
+        url: `https://graph.facebook.com/v2.8/${id}?access_token=${accessToken}&fields=first_name,last_name,email`,
+       
     };
-    request(options)
+    axios(options).then(async (fbRes) => { 
+        console.log("half the way");
+        const user = await authFacebook(id);
+        return user ? signJwt(user, (err, token) => res.json({ "is_signed": true, "token": token }).end()) : res.json({ "is_signed": false }).end()
+    }).catch(err => {
+        console.log('err');
+        console.log(err.response);
+    });
+    /* request(options)
         .then(async (fbRes) => {
             const user = await authFacebook(id);
             return user ? signJwt(user, (err, token) => res.json({ "is_signed": true, "token": token }).end()) : res.json({ "is_signed": false }).end()
-        });
+        }); */
 })
 router.post("/facebook/register", (req, res) => {
     const user = new User(req.body);
