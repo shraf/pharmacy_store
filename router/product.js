@@ -60,16 +60,6 @@ router.get("/category/:category", (req, res) => {
 }
 )
 
-router.get("/trans", async (req, res) => {
-    console.log("transing");
-    const products = await Product.find();
-    products.map(product => {
-        product.image = undefined;
-        product.save();
-    })
-
-    res.send("ok");
-});
 
 router.get('/:name', (req, res) => {
     Product.findOne({ name: req.params.name })
