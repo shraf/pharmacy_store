@@ -25,7 +25,7 @@ const AppRouter = ({user}) => {
       
             <Switch>
             <Route exact  path="/" component={Home}/>
-            <ProtectedRoute condition={user.user.isAdmin} path="/admin" component={AdminPanel}/>
+            <ProtectedRoute condition={user.user&&user.user.isAdmin} path="/admin" component={AdminPanel}/>
 
                 <ProtectedRoute condition={!user.isLogged} path="/login" component={()=><Form component= {<Login/>}/>}/>
                 <ProtectedRoute condition={!user.isLogged} path="/register" component={Register}/>
